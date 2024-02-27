@@ -7,11 +7,6 @@ from urllib.parse import urlparse
 import concurrent.futures
 import sys
 
-
-print("Waiting for 15 seconds for EKV to reach eventual consistency. Please be patient.")
-time.sleep(15)
-
-
 def _get_canonical_name(hostname_www):
     print(f'Attempting to get canonical name for {hostname_www}')
     resolver = dns.resolver.Resolver()
@@ -24,7 +19,7 @@ def _get_canonical_name(hostname_www):
         return None
 
 
-get_canonical_name = _get_canonical_name('www.playstation.com')
+get_canonical_name = _get_canonical_name('paulm-sony.test.edgekey.net')
 print(get_canonical_name)
 
 staging_host = get_canonical_name.replace('akamaiedge', 'akamaiedge-staging')
@@ -50,7 +45,7 @@ print(resultant_str)
 class HostHeaderSSLAdapter(requests.adapters.HTTPAdapter):
     def resolve(self, hostname):
         ips = resultant_str
-        resolutions = {'www.playstation.com.com': ips}
+        resolutions = {'paulm-sony.test.edgekey.net': ips}
         print(resolutions)
         return resolutions.get(hostname)
 
@@ -76,7 +71,7 @@ def process_url(row):
     destination = row['destination']
     host = row['hostname']
     fRedirect = 'https://' + host + destination
-    url = 'https://www.playstation.com/' + source_data
+    url = 'https://paulm-sony.test.edgekey.net/' + source_data
     headers = {"Accept": "text/html"}
 
     session = requests.Session()
@@ -101,7 +96,7 @@ def main():
     df = pd.read_excel(file_name, engine='openpyxl')
 
     # Define the number of threads you want to use
-    num_threads = 4  # For example, using 10 threads
+    num_threads = 2  # For example, using 10 threads
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
         futures = [executor.submit(process_url, row) for _, row in df.iterrows()]
