@@ -49,7 +49,7 @@ def resolveDNSA():
 resultDNSA = resolveDNSA()  # Perform the DNS A record resolution.
 resultant_str = ''.join(str(item) for item in resultDNSA)  # Convert DNS answer to a string.
 
-print(resultant_str)  # Print the result of the DNS A record resolution.
+#print(resultant_str)  # Print the result of the DNS A record resolution.
 
 # Custom adapter for requests library to allow setting the Host header explicitly.
 class HostHeaderSSLAdapter(requests.adapters.HTTPAdapter):
