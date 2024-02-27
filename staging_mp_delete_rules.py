@@ -95,7 +95,7 @@ def thread_worker():
 def process_row(row):
     json_data = json.dumps(row)  # Convert row to JSON.
     print(json_data)  # Print the JSON data.
-    url = 'https://paulm-sony.test.edgekey.net/staging/upload'  # Define the URL for the POST request.
+    url = 'https://paulm-sony.test.edgekey.net/staging/delete'  # Define the URL for the POST request.
     headers = {"Content-type": "application/json", "User-Agent": "paul-python"}  # Set custom headers.
     requests.packages.urllib3.disable_warnings()  # Disable warnings about SSL certificate verification.
     session = requests.Session()  # Create a new session.
