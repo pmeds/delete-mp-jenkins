@@ -22,9 +22,9 @@ chmod 754 staging_mp_delete_rules.py'''
       steps {
         echo 'checking if there is a csv file for games'
         script {
-          if (fileExists('test-games-upload.csv')) {
+          if (fileExists('delete-test-games-upload.csv')) {
             sh 'echo "uploading games rules"'
-            sh 'python3 staging_mp_delete_rules.py test-games-upload.csv'
+            sh 'python3 staging_mp_delete_rules.py delete-test-games-upload.csv'
           }
         }
 
@@ -35,9 +35,9 @@ chmod 754 staging_mp_delete_rules.py'''
       steps {
         echo 'Checking for CSV for General'
         script {
-          if (fileExists('test-general-upload.csv')) {
+          if (fileExists('delete-test-general-upload.csv')) {
             sh 'echo "uploading general rules"'
-            sh 'python3 staging_mp_delete_rules.py test-general-upload.csv'
+            sh 'python3 staging_mp_delete_rules.py delete-test-general-upload.csv'
           }
         }
 
