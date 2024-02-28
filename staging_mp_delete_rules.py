@@ -101,7 +101,7 @@ def process_row(row):
     session = requests.Session()  # Create a new session.
     session.mount('https://', HostHeaderSSLAdapter())  # Mount the custom adapter for HTTPS requests.
     response = session.post(url, data=json_data, headers=headers, verify=False)  # Make the POST request.
-    print(response.status_code, response.reason)  # Print the response status code and reason.
+    print(response)  # Print the response status code and reason.
 
 # Start a pool of threads to process the tasks.
 num_threads = 4
