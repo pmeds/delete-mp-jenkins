@@ -96,7 +96,7 @@ def process_row(row):
     json_data = json.dumps(row)  # Convert row to JSON.
     print(json_data)  # Print the JSON data.
     url = 'https://paulm-sony.test.edgekey.net/staging/delete'  # Define the URL for the POST request.
-    headers = {"Content-type": "application/json", "User-Agent": "paul-python"}  # Set custom headers.
+    headers = {"Content-type": "application/json", "User-Agent": "paul-python", "Akamai-EW-Trace": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ2Y2QiOiI0MTIyIiwia2lkIjo0LCJhY2wiOlsicGF1bG0tc29ueS50ZXN0LmVkZ2VrZXkubmV0Il0sImV4cCI6MTcwOTE5OTE2OCwiaWF0IjoxNzA5MTU1OTY4LCJqdGkiOiI0NjRhMjUzNC0xMjI4LTQ3MjQtYmQyZC1kZTdlZTRjNTU3OTcifQ.yW72bIPBDwVSShdWMaUcnii3ou7NgqdJ6FxrWxgfQo4jIT5g18TJyVFJO80LASZlPgbiTIZ_ogMj3Ugr3s-t3vscQ4n4RV7-7ENbVFjNd5Xz4z8qgOZuSEoxKS3XjY0ZBKZF0NSP5mgdjlwoxAMQDcF55VwR3SqI9FNGyTc1rI7kYYkLtXlpdifPEVbRjAZkv3ib-6YpIDtwpgXM_ZqQbIqi1ON08QMwEASRUcYekmJgCtCNlfXW1XNDNWZHlPUQpyCoAUrxWc744Nr_pBZwER3eMGpllswnUto7qUR5q40Pzs6Ler21CouDOuIm7pUHkJ3sFySJg9ba8SQq6-SBqg", "Pragma": "akamai-x-ew-debug-rp, akamai-x-ew-onclientrequest, akamai-x-ew-debug-subs, akamai-x-get-extracted-values, akamai-x-get-request-id, akamai-x-ew-debug"}  # Set custom headers.
     requests.packages.urllib3.disable_warnings()  # Disable warnings about SSL certificate verification.
     session = requests.Session()  # Create a new session.
     session.mount('https://', HostHeaderSSLAdapter())  # Mount the custom adapter for HTTPS requests.
