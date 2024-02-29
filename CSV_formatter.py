@@ -3,7 +3,7 @@ import hashlib
 import csv
 import re
 # Master file with all the rules
-filename = "test-uploader2.xlsx"
+filename = "test-uploader3.xlsx"
 print(filename)
 # header for the CSV files
 header = ['hash', 'source', 'destination', 'host']
