@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('get excel and python script') {
+    stage('Get excel and python script') {
       steps {
         echo 'Getting the excel and python files'
         sh '''ls -la
