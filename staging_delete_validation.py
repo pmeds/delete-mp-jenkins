@@ -69,14 +69,13 @@ def process_url(row):
     print(response.content)
 
 def main():
-    """
+
     if len(sys.argv) < 2:
         print('No file provided, no rules to upload')
         sys.exit()
     else:
         file_name = sys.argv[1]
-"""
-    file_name = 'delete-test-games-upload.csv'
+
     with open(file_name, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         rows = list(reader)  # Convert iterator to list to reuse it
