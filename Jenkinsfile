@@ -6,7 +6,9 @@ pipeline {
         echo 'Getting the excel and python files'
         sh '''ls -la
 chmod 754 CSV_formatter.py
-chmod 754 staging_mp_delete_rules.py'''
+chmod 754 staging_mp_delete_rules.py
+chmod 754 staging_delete_validation.py 
+'''
       }
     }
 
@@ -38,6 +40,19 @@ chmod 754 staging_mp_delete_rules.py'''
           if (fileExists('delete-test-general-upload.csv')) {
             sh 'echo "uploading general rules"'
             sh 'python3 staging_mp_delete_rules.py delete-test-general-upload.csv'
+          }
+        }
+
+      }
+    }
+
+    stage('Testing All Redirects') {
+      steps {
+        echo 'Testing the deleted rules'
+        script {
+          if (fileExists('test-delete3.xlsx')) {
+            sh 'echo "testing uploaded general rules"'
+            sh 'python3 paul_staging_mp_redir_validation.py'
           }
         }
 
