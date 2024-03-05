@@ -39,7 +39,7 @@ chmod 754 staging_delete_validation.py
         script {
           if (fileExists('delete-test-upload.csv')) {
             sh 'echo "testing uploaded general rules"'
-            sh 'python3 paul_staging_mp_redir_validation.py'
+            sh 'python3 staging_delete_validation.py delete-test-upload.csv'
           }
         }
 
