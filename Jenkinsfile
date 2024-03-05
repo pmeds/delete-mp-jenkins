@@ -20,26 +20,13 @@ chmod 754 staging_delete_validation.py
       }
     }
 
-    stage('Upload Games') {
+    stage('Delete Rules') {
       steps {
         echo 'checking if there is a csv file for games'
         script {
-          if (fileExists('delete-test-games-upload.csv')) {
+          if (fileExists('delete-test-upload.csv')) {
             sh 'echo "uploading games rules"'
-            sh 'python3 staging_mp_delete_rules.py delete-test-games-upload.csv'
-          }
-        }
-
-      }
-    }
-
-    stage('Upload General') {
-      steps {
-        echo 'Checking for CSV for General'
-        script {
-          if (fileExists('delete-test-general-upload.csv')) {
-            sh 'echo "uploading general rules"'
-            sh 'python3 staging_mp_delete_rules.py delete-test-general-upload.csv'
+            sh 'python3 staging_mp_delete_rules.py delete-test-upload.csv'
           }
         }
 
@@ -50,7 +37,7 @@ chmod 754 staging_delete_validation.py
       steps {
         echo 'Testing the deleted rules'
         script {
-          if (fileExists('test-delete3.xlsx')) {
+          if (fileExists('delete-test-upload.csv')) {
             sh 'echo "testing uploaded general rules"'
             sh 'python3 paul_staging_mp_redir_validation.py'
           }
