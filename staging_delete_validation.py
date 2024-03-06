@@ -7,6 +7,15 @@ from urllib.parse import urlparse
 import concurrent.futures
 import sys
 
+
+print("Waiting for 15 seconds for EKV to reach eventual consistency. Please be patient.", end='', flush=True)
+
+for _ in range(15):  # Loop 15 times for 15 seconds
+    time.sleep(1)  # Wait for 1 second
+    print('.', end='', flush=True)  # Print a dot for each second waited, without moving to a new line
+
+print("\nDone waiting.")  # Move to a new line when done waiting
+
 def _get_canonical_name(hostname_www):
     print(f'Attempting to get canonical name for {hostname_www}')
     resolver = dns.resolver.Resolver()
